@@ -223,6 +223,17 @@ header {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
 }
 
+.question-box2 {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 25px;
+  width: 90%;
+  text-align: center;
+  font-size: 1.5rem;
+  line-height: 1.6;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
 .controls {
   display: flex;
   justify-content: center;
@@ -903,7 +914,7 @@ GAME_HTML = APP_CSS + '''
               `;
           }
           else {
-            let resultsHtml = `<div class="question-box"><h2>Wyniki pytania</h2><ul>`;
+            let resultsHtml = `<div class="question-box2"><h2>Wyniki pytania</h2><ul>`;
     
             for (const [player, points] of Object.entries(data.results)) {
               let pointsInfo = '';
@@ -921,7 +932,7 @@ GAME_HTML = APP_CSS + '''
           }
       }
       else if (data.type === 'kolory') {
-        let resultsHtml = `<div class="question-box"><h2>Wyniki rundy</h2><ul>`;
+        let resultsHtml = `<div class="question-box2"><h2>Wyniki rundy</h2><ul>`;
 
         data.results.forEach(result => {
           resultsHtml += `<li>${result.player}: +${result.points} pkt chyżości (${result.reason})</li>`;
@@ -934,8 +945,8 @@ GAME_HTML = APP_CSS + '''
         contentDiv.innerHTML = resultsHtml;
       }
       else if (data.type === 'timekeeper') {
-        let resultsHtml = `<div class="question-box"><h2>Wyniki Chronometrażysty</h2><table style="width:100%;">`;
-        resultsHtml += `<tr><th>Gracz</th><th>Czas</th><th>Różnica</th><th>Punkty</th></tr>`;
+        let resultsHtml = `<div class="question-box2"><h2>Wyniki Chronometrażysty</h2><table style="width:100%;">`;
+        resultsHtml += `<tr><th>Gracz</th><th>Czas</th><th>Różnica</th><th>Pkt chyżości</th></tr>`;
 
         data.results.forEach(result => {
           resultsHtml += `<tr>
@@ -961,7 +972,7 @@ GAME_HTML = APP_CSS + '''
           : ``;
     
         contentDiv.innerHTML = `
-          <div class="question-box">
+          <div class="question-box2">
             <h2>${data.message}</h2>
             ${lostInfo}
             ${isHost ? '<button class="btn" onclick="nextRound()">Dalej</button>' : ''}
